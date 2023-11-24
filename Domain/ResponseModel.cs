@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class ReponseModel<T>
+    public class ResponseModel<T>
     {
         private DoctorCreateDTO doctorDTO;
 
-        public ReponseModel(DoctorCreateDTO doctorDTO)
+        public ResponseModel(DoctorCreateDTO doctorDTO)
         {
             this.doctorDTO = doctorDTO;
         }
 
-        public ReponseModel(T result, HttpStatusCode statusCode = HttpStatusCode.OK)
+        public ResponseModel(T result, HttpStatusCode statusCode = HttpStatusCode.OK)
         {
             Result = result;
             StatusCode = statusCode;
         }
 
-        public ReponseModel(string error, HttpStatusCode statusCode = HttpStatusCode.BadRequest)
+        public ResponseModel(string error, HttpStatusCode statusCode = HttpStatusCode.BadRequest)
         {
             Error = error;
             StatusCode = statusCode;
