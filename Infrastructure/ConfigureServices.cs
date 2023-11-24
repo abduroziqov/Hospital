@@ -12,8 +12,10 @@ namespace Infrastructure
         public static void AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IDoctorService, DoctorService>();
+            services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<HospitalDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("Connection")));
+
         }
     }
 }

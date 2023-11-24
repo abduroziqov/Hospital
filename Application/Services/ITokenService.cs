@@ -10,5 +10,5 @@ public interface ITokenService
     // Task<Token> GenerateRefreshTokensAsync();
      Task<string> GenerateRefreshTokensAsync();
      Task<Token> GetNewTokenFromExpiredTokensAsync(Token tokens);
-    string ComputeSHA256Hash(string input);
+     string ComputeSHA256Hash(string input);
 }

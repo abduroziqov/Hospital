@@ -19,7 +19,7 @@ namespace Infrastructure.Services
             _refreshTokenLifetime = int.Parse(configuration["JWT:RefreshTokenLifetimeInMinutes"]);
         }
 
-        public Task<Response<bool>> DeleteUserAsync(int UserId)
+        public async Task<Response<bool>> DeleteUserAsync(int UserId)
         {
             throw new NotImplementedException();
         }

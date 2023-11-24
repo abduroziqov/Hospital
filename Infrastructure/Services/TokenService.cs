@@ -49,7 +49,8 @@ namespace Infrastructure.Services
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            double accesTokenLifeTime = double.Parse(_configuration["JWTAccessTokenLifetimeInMinutes"]);
+             double accesTokenLifeTime = double.Parse(_configuration["JWTAccessTokenLifetimeInMinutes"]);
+            //double accesTokenLifeTime = double.Parse(_configuration["AccessTokenLifetimeInMinutes"]);
 
             var token = new JwtSecurityToken(expires: DateTime.Now.AddMinutes(accesTokenLifeTime),
                 signingCredentials: credentials,

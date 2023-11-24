@@ -2,7 +2,6 @@
 using Domain.Entities;
 using Domain.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -30,7 +29,7 @@ namespace Api.Controllers
             => await _identityService.LoginAsync(credentials);
 
         [HttpGet]
-        public async Task<Response<bool>> Logout() 
+        public async Task<Response<bool>> Logout()
             => await _identityService.LogoutAsync();
 
         [HttpDelete]

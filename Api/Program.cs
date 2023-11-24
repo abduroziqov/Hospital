@@ -5,8 +5,8 @@ using Infrastructure.DataAccess;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Api
 {
@@ -15,6 +15,7 @@ namespace Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             // Add services to the container.
 
@@ -30,22 +31,21 @@ namespace Api
             builder.Services.mappingservice();
             builder.Services.AddDbContext<HospitalDbContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-            
+
             // JWT
-            builder.Services.AddAuthorization(JwtBearerDefaults.AuthenticationScheme)
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(congif =>
                 {
                     congif.SaveToken = true;
                     congif.TokenValidationParameters = new()
                     {
-                        IssiuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
                         ClockSkew = TimeSpan.Zero,
                         ValidateLifetime = true,
-                        ValidateIssuer = false, 
+                        ValidateIssuer = false,
                         ValidateAudience = false,
                     };
                 });
-
 
 
             var app = builder.Build();
