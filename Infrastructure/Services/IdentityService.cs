@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Domain.Models;
 using Infrastructure.DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Services
@@ -43,8 +44,10 @@ namespace Infrastructure.Services
         public async Task<Response<Token>> LoginAsync(Credential credential)
         {
             // Name     UserName
+            // Role added
             credential.Password = _tokenService.ComputeSHA256Hash(credential.Password);
-            User? user = _dbContext.Users.FirstOrDefault(x => x.Name.Equals(credential.Name) &&
+            User? user = _dbContext.Users.Include(x => x.Roles).ThenInclude(x => x.Permissions)
+                .FirstOrDefault(x => x.Name.Equals(credential.Name) &&
                                                               x.Password.Equals(credential.Password));
 
             if(user == null)

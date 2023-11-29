@@ -33,7 +33,15 @@ namespace Api.Controllers
             => await _identityService.LogoutAsync();
 
         [HttpDelete]
+        [Authorize(Roles = "DeleteStudents")]
         public async Task<Response<bool>> Delete(int userId)
             => await _identityService.DeleteUserAsync(userId);
+
+        [HttpGet]
+        [Authorize(Roles = "GetAllStudents")]
+        public string[] GetAllStudents()
+        {
+            return new string[] { "sdf", "sadf" };
+        }
     }
 }

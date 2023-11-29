@@ -33,9 +33,7 @@ namespace Infrastructure.Services
             {
                 builder.Append(hashBytes[i].ToString("x2"));
             }
-
             return builder.ToString();
-
         }
 
         public async Task<Token> GenerateTokensAsync(User user)
@@ -46,15 +44,25 @@ namespace Infrastructure.Services
                 new Claim("Id", user.Id.ToString())
             };
 
+
+
+            foreach (var role in user.Roles)
+            {
+                foreach (var permissions in role.Permissions)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, permissions.Name));
+
+                }
+            }
+
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-             double accesTokenLifeTime = double.Parse(_configuration["JWTAccessTokenLifetimeInMinutes"]);
-            //double accesTokenLifeTime = double.Parse(_configuration["AccessTokenLifetimeInMinutes"]);
+            double accesTokenLifeTime = double.Parse(_configuration["JWT:AccessTokenLifetimeInMinutes"]);
 
             var token = new JwtSecurityToken(expires: DateTime.Now.AddMinutes(accesTokenLifeTime),
-                signingCredentials: credentials,
-                claims: claims);
+              signingCredentials: credentials,
+              claims: claims);
 
             string accessToken = new JwtSecurityTokenHandler().WriteToken(token);
 
