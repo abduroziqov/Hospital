@@ -1,0 +1,59 @@
+﻿@model MVC.Models.EmployeeViewModel
+
+@{
+	ViewData["Title"] = "Edit Employee";
+	var errorMessage = TempData["errorMessage"]?.ToString();
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrEmpty(@errorMessage))
+{
+	<div class="alert alert-danger">
+		<strong>Error! </strong>@errorMessage
+		<button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+
+	</div>
+}
+<form action="Edit" method="post" autocomplete="off">
+	<div class="mb-3">
+		<label class="form-label">Id</label>
+		<input type="text" class="form-control" asp-for="Id" readonly />
+	</div>
+	<div class="mb-3">
+		<label class="form-label">First Name</label>
+		<input type="text" class="form-controller" asp-for="FirstName" />
+		<span asp-validation-for="FirstName" class="text-danger"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Last Name</label>
+		<input type="text" class="form-controller" asp-for="LastName" />
+		<span asp-validation-for="LastName" class="text-danger"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Date Of Bith</label>
+		<input type="date" class="form-controller" asp-for="DateOfBirth" />
+		<span asp-validation-for="DateOfBirth" class="text-danger"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label">E-Mail</label>
+		<input type="email" class="form-controller" asp-for="Email" />
+		<span asp-validation-for="Email" class="text-danger"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Salary</label>
+		<div class="input-group">
+			<span class="input-group-text">$</span>
+			<input type="text" class="form-controller" asp-for="Salary" />
+		</div>
+		<div class="d-grid">
+			<button type="submit" class="btn btn-success">Update</button>
+		</div>
+		<span asp-validation-for="Salary" class="text-danger"></span>
+	</div>
+</form>
+@section Scripts{
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

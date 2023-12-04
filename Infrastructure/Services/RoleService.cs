@@ -51,7 +51,7 @@ namespace Infrastructure.Services
             role1.Id = role.Id;
             role1.Name = role.Name;
 
-            _dbContext.Roles.Add(role1);
+            _dbContext.Roles.AddAsync(role1);
             await _dbContext.SaveChangesAsync();
 
             return role1;

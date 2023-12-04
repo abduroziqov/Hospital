@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace Domain.Entities;
 
 public class User
 {
@@ -7,5 +9,6 @@ public class User
     public string? UserName { get; set; }
     public string? Password { get; set; }
     public string? Phone { get; set; }
-    public virtual ICollection<Role> Roles { get; set;}
+    [JsonIgnore]
+    public virtual ICollection<Role> Roles { get; set;} 
 }

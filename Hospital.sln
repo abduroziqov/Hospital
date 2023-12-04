@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{8CA0C41C-3D4A-4077-ABB8-A0826ABED9EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{8CA0C41C-3D4A-4077-ABB8-A0826ABED9EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{CBD6CED1-2E95-49B8-A96A-F5E638080420}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{CBD6CED1-2E95-49B8-A96A-F5E638080420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{CDD63ABB-A19E-4426-A995-4358037FAAB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{CDD63ABB-A19E-4426-A995-4358037FAAB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{21CD9381-44E7-41CF-9EE5-C09F3D69BF4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{21CD9381-44E7-41CF-9EE5-C09F3D69BF4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{0789FA3E-1A10-436F-93E2-4E70EB50CA09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{21CD9381-44E7-41CF-9EE5-C09F3D69BF4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21CD9381-44E7-41CF-9EE5-C09F3D69BF4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21CD9381-44E7-41CF-9EE5-C09F3D69BF4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0789FA3E-1A10-436F-93E2-4E70EB50CA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0789FA3E-1A10-436F-93E2-4E70EB50CA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0789FA3E-1A10-436F-93E2-4E70EB50CA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0789FA3E-1A10-436F-93E2-4E70EB50CA09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
